@@ -9,7 +9,8 @@ class BaseController extends AbstractController
 {
     public function renderDefault() {
         return [
-            'message' => 'default'
+            'message' => 'ЧулГУ',
+            'title' => 'Главная страница',
         ];
     }
 }
