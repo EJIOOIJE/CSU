@@ -20,11 +20,9 @@
                             </div>
                         {% endif %}
 
-                        <h1 class="h3 mb-3 font-weight-normal text-center">Вход в систему</h1>
-                        <label for="inputEmail">Email</label>
-                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
-                        <label for="inputPassword">Пароль</label>
-                        <input type="password" name="password" id="inputPassword" class="form-control" required>
+                        <h1 class="h3 mb-3 font-weight-normal text-center">Личный кабинет абитуриента</h1>
+                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mt-5" placeholder="Email" required autofocus>
+                        <input type="password" name="password" id="inputPassword" class="form-control mt-3" placeholder="Пароль" required>
 
                         <input type="hidden" name="_csrf_token"
                                value="{{ csrf_token('authenticate') }}"
@@ -42,7 +40,7 @@
                         #}
 
                         <button class="btn btn-block btn-primary mt-5" type="submit">
-                            Вход
+                            Войти
                         </button>
                     </form>
                 </div>

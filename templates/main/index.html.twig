@@ -6,10 +6,24 @@
 
     <div class="container-fluid">
         <div class="row no-gutters justify-content-center mt-5">
-            <div class="col-12 col-lg-6 col-md-6">
-                <h1 class="display-4 text-center">
-                    {{ message }}
-                </h1>
+            <div class="col-12 col-lg-12 col-md-12">
+                <table class="table-responsive">
+                    {% for j in 0..(faculties|length / 4) %}
+                        <tr>
+                            {% if loop.last == false %}
+                                {% for i in 0..3 %}
+                                    <td>
+                                        <a title="{{ faculties[j * 4 + i].faculty }}" href="https://www.csu.ru/Lists/List2/страница%20факультета.aspx?ID={{ faculties[j * 4 + i].link }}"><img class="img-fluid" alt="{{ faculties[j * 4 + i].faculty }}" src="https://www.csu.ru/PublishingImages/УСО/fac_buttons/{{ faculties[j * 4 + i].img }}"></a>
+                                    </td>
+                                {% endfor %}
+                            {% else %}
+                                <td>
+                                    <a title="{{ faculties[faculties|length - 1].faculty }}" href="https://www.csu.ru/Lists/List2/страница%20факультета.aspx?ID={{ faculties[faculties|length - 1].link }}"><img alt="{{ faculties[faculties|length - 1].faculty }}" src="https://www.csu.ru/PublishingImages/УСО/fac_buttons/{{ faculties[faculties|length - 1].img }}"></a>
+                                </td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </table>
             </div>
         </div>
     </div>
