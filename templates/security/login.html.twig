@@ -10,7 +10,8 @@
                 <div class="form-login shadow-lg">
                     <form method="post">
                         {% if error %}
-                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            <!--<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>-->
+                            <div class="alert alert-danger">{{ error.messageKey| replace({"Invalid credentials." : "Неверный пароль", "Email could not be found." : "Такого пользователя не существует"}) }}</div>
                         {% endif %}
 
                         {% if app.user %}

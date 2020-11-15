@@ -1,9 +1,23 @@
-{% extends 'admin/adminbase.html.twig' %}
+{% extends 'main/base.html.twig' %}
 
 {% block body %}
-    <h1>
-        {{ message }}
-    </h1>
 
-    {{ form(form) }}
+    <div class="container-fluid">
+        <div class="row no-gutters justify-content-center">
+            <div class="col-12 col-lg-6 col-md-6">
+                <div class="form-login shadow-lg">
+                    <form method="post">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error }}</div>
+                        {% endif %}
+                        <h1 class="h3 mb-3 font-weight-normal text-center">
+                            {{ message }}
+                        </h1>
+                        {{ form(form) }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

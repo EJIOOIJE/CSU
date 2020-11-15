@@ -1,7 +1,10 @@
+imports:
+    - { resource: framework.yaml }
 security:
     encoders:
         App\Entity\User:
-            algorithm: auto
+            algorithm: bcrypt
+            cost: 12
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
@@ -15,6 +18,11 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 31536000
+                path:     /
+                always_remember_me: true
             anonymous: true
             lazy: true
             provider: app_user_provider
