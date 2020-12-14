@@ -65,26 +65,30 @@ class SecurityController extends AbstractController
         $userRepository = $em->getRepository(User::class);
         $userExist = (bool)$userRepository->findOneBy(['email' => $user->getEmail()]);
 
-        if ($userExist) {
-            $error = "Пользователь с таким email уже зарегистрирован";
-        } elseif (($form->isSubmitted()) && !($form->isValid())) {
-            $error = "Пароли не совпадают";
+        if ($form->isSubmitted()) {
+            if ($userExist) {
+                $error = "Пользователь с таким email уже зарегистрирован";
+            } elseif (!($form->isValid())) {
+                $error = "Пароли не совпадают";
+            }
+
+            if(($form->isValid()) && (!$error)) {
+                $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+                $user->setPassword($password);
+                $user->setRoles(["ROLE_ADMIN"]);
+                $user->setDir(uniqid());
+                $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+                $this->container->get('security.token_storage')->setToken($token);
+                $this->container->get('session')->set('_security_main', serialize($token));
+                // The user is now logged in, you can redirect or do whatever.
+                $em->persist($user);
+                $em->flush();
+
+                return $this->redirectToRoute('home');
+            }
         }
 
-        if(($form->isSubmitted()) && ($form->isValid()) && (!$error)) {
-            $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
-            $user->setPassword($password);
-            $user->setRoles(["ROLE_ADMIN"]);
-            $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
-            $this->container->get('security.token_storage')->setToken($token);
-            $this->container->get('session')->set('_security_main', serialize($token));
-            // The user is now logged in, you can redirect or do whatever.
-            $em->persist($user);
-            $em->flush();
-
-            return $this->redirectToRoute('home');
-        }
-
+        $form->clearErrors(true);
         $forRender = ['error' => $error];
         $forRender['message'] = 'Форма создания пользователя';
         $forRender['form'] = $form->createView();

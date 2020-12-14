@@ -34,7 +34,24 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    private $dir;
+
     private $plainPassword;
+
+    public function getDir(): ?string
+    {
+        return $this->dir;
+    }
+
+    public function setDir(string $dir): self
+    {
+        $this->dir = $dir;
+
+        return $this;
+    }
 
     public function getId(): ?int
     {

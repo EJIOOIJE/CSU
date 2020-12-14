@@ -1,0 +1,273 @@
+<form enctype="multipart/form-data" class="form" method="post">
+    <div id="alert" class="d-flex flex-row-reverse">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('fail') %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    </div>
+    {{ form_start(form) }}
+        {% if type == 'data' %}
+            {{ form_row(form.surname) }}
+            {{ form_row(form.name) }}
+            {{ form_row(form.middleName) }}
+            {{ form_row(form.gender) }}
+            {{ form_row(form.birthday) }}
+            {{ form_row(form.place) }}
+            {{ form_row(form.phone) }}
+            {{ form_row(form.email) }}
+            <label for="personal_data_agreement">
+                Если Вам нет 18 лет, Вам необходимо скачать
+                <a href="https://www.csu.ru/SiteAssets/roles/prospective-students/2020/spo/document/%D0%A1%D0%9E%D0%93%D0%9B%D0%90%D0%A1%D0%98%D0%95%20%D0%9D%D0%90%20%D0%9E%D0%91%D0%A0%D0%90%D0%91%D0%9E%D0%A2%D0%9A%D0%A3%20%D0%9F%D0%94_%D0%BD%D0%B5%D1%81%D0%BE%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%D0%BD%D0%BE%D0%BB%D0%B5%D1%82%D0%BD%D0%B8%D0%B5.docx">
+                бланк согласия на обработку персональных данных</a>
+                , для заполнения одним из родителей.<br /><br />
+                Примечание: Если абитуриенту на дату подачи заявления не исполнилось 18 лет, то для него загрузка данного документа должна быть обязательна, без него заявление не должно быть принято.<br /><br />
+                Загрузите бланк согласия на обработку персональных данных
+            </label>
+            {{ form_row(form.agreement) }}
+        {% elseif type == 'right' %}
+            <span>
+                Обращаем ваше внимание, что особые права действуют только при поступлении на направления БАКАЛАВРИАТА, СПЕЦИАЛИТЕТА!<br />
+При поступлении на направления МАГИСТРАТУРЫ и АСПИРАНТУРЫ вы можете воспользоваться правом поступать на целевое обучение.<br /><br />
+                Ознакомиться подробнее с поступлением по особым правам вы можете здесь:<br /><br />
+                Квота для абитуриентов с особыми правами (выводится для бакалавров)<br />
+                <a href="https://www.csu.ru/roles/prospective-students/2020/bachelor/bakkvota2020.aspx">
+                    https://www.csu.ru/roles/prospective-students/2020/bachelor/bakkvota2020.aspx
+                </a> <br /><br />
+                Квота на целевое обучение ( ссылка в зависимости от выбранного уровня образования)<br />
+                <a href="https://www.csu.ru/roles/prospective-students/2020/bachelor/baktarget.aspx">
+                    https://www.csu.ru/roles/prospective-students/2020/bachelor/baktarget.aspx</a>
+                (для бак) <br />
+                <a href="https://www.csu.ru/roles/prospective-students/2020/magistr/madtarget.aspx">
+                   https://www.csu.ru/roles/prospective-students/2020/magistr/madtarget.aspx</a>
+                (для маг) <br />
+                <a href="https://www.csu.ru/roles/prospective-students/2020/aspirant/asptarget.aspx">
+                   https://www.csu.ru/roles/prospective-students/2020/aspirant/asptarget.aspx</a>
+                (для асп) <br /><br />
+                Поступление по результатам олимпиад (выводится для бакалавров)<br />
+                <a href="https://www.csu.ru/roles/prospective-students/2020/bachelor/bakolymp2020.aspx">
+                   https://www.csu.ru/roles/prospective-students/2020/bachelor/bakolymp2020.aspx</a>
+                <br /><br />
+            </span><br /><br />
+            <div class="hidden-field-switch">
+                {{ form_row(form.rights) }}
+            </div>
+            <div class="hidden-field">
+                {{ form_row(form.document) }}
+            </div>
+            {{ form_row(form.olympiads) }}
+            <table class="table input-table">
+                <thead>
+                    <tr>
+                        <td>
+                            Наименование олимпиады
+                        </td>
+                        <td>
+                            Статус диплома (победитель/призер)
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <button class="btn mb-4 btn-light add-field" style="color: green; font-size: 20px">+</button><br />
+            <span>
+                Вы можете ознакомится с информацией о поступлении абитуриентов с инвалидностью и ограниченными
+                возможностями здоровья в ЧелГУ
+                <a href="https://www.csu.ru/roles/prospective-students/OVZ.aspx">https://www.csu.ru/roles/prospective-students/OVZ.aspx</a>
+            </span><br /><br />
+            {{ form_row(form.informed) }}
+        {% else %}
+            {% for e in form %}
+                {{ form_row(e) }}
+            {% endfor %}
+        {% endif %}
+        <div class="d-flex">
+            <div class="p-2 mr-auto">
+                <button class="btn btn-outline-dark back">Назад</button>
+            </div>
+            <div class="p-2 ml-auto">
+                <button type="submit"
+                        id="submit"
+                        name="submit"
+                        class="btn btn-outline-success next"
+                        href={{ path('admin_data', {'form_id': type_id}) }}
+                >Далее
+                </button>
+            </div>
+        </div>
+    {{ form_end(form) }}
+</form>
+
+
+<link rel="stylesheet" href="{{ asset('assets/admin/css/form_style.css') }}">
+
+<script type="text/javascript">
+
+    Date.prototype.yyyymmdd = function() {
+        var yyyy = this.getFullYear().toString();
+        var mm = (this.getMonth()+1).toString();
+        var dd  = this.getDate().toString();
+        return yyyy + "-" + (mm[1]?mm:"0"+mm[0]) + "-" + (dd[1]?dd:"0"+dd[0]);
+    };
+
+    function switchHidden(obj) {
+        if (obj.find("select").val() === 'Нет')
+            obj.next().addClass('hide');
+        else
+            obj.next().removeClass('hide');
+    }
+
+    function addInputTableField() {
+        let tbody = $(".input-table").find("tbody");
+        let tr = $("<tr></tr>");
+        let td1 = $("<td></td>");
+        let select1 = $('<select class="form-control"></select>');
+        let td2 = $("<td></td>");
+        let select2 = $('<select class="form-control"></select>');
+        let td3 = $("<td></td>");
+        let sel1 = {
+            "a" : "a",
+            "b" : "b",
+            "c" : "c",
+            "d" : "d",
+        };
+        let sel2 = {
+            "winner" : "Победитель олимпиады",
+            "prize-winner" : "Призер олимпиады",
+        };
+
+        $.each(sel1, function (i, v) {
+            select1.append(`<option value="${v}">
+                                    ${i}
+                                </option>`)
+        });
+        td1.append(select1);
+        $.each(sel2, function (i, v) {
+            select2.append(`<option value="${v}">
+                                    ${i}
+                                </option>`);
+        });
+        td2.append(select2);
+        td3.append(`<button class="btn btn-light delete-field" style="color: red; font-size: 20px">
+                        &times;
+                         </button>`);
+
+        td3.find("button").on('click', function(event) {
+            event.preventDefault();
+            $(this).parent().parent().remove();
+            if ($(".input-table").find("tbody").find("tr").length === 0)
+                addInputTableField();
+        });
+
+        tr.append(td1, td2, td3);
+
+        tbody.append(tr);
+    }
+
+    $(document).ready(function() {
+
+        $('.custom-file-input').on('change', function (event) {
+            let fileName = $(this).val().split('\\').pop();
+            $(this).next('.custom-file-label').addClass("selected").html(fileName);
+        });
+        
+        $(".add-field").on('click', function (event) {
+            event.preventDefault();
+            addInputTableField();
+        });
+
+        $(".form .back").click(function (event) {
+            let frm = $("#frm");
+            let opt = $("#options");
+
+            event.preventDefault();
+            opt.toggleClass("hide");
+            frm.toggleClass("hide");
+            opt.animate({opacity: "show"}, 'slow');
+            frm.empty();
+        });
+
+        $(".form").submit(function (event) {
+            event.preventDefault();
+            let link = $(this).find(".next").attr("href");
+            let data = new FormData($(this)[0]);
+            let el = $(this).find('.custom-file-input');
+            let inputTable = $(this).find(".input-table");
+
+            if (el.length && el.get(0).files.length !== 0)
+                    data.append(el.attr('name'), el.get(0).files[0]);
+
+            if (inputTable.length) {
+                let appendable = new Array();
+                let tr = inputTable.find("tbody").find("tr");
+
+                tr.each(function(i, v) {
+                    let headers = [];
+                    let app = {};
+                    let td = $(this).find("td");
+
+                    inputTable.find("thead").find("td").each(function() {
+                        headers.push($(this).text());
+                    });
+
+                    td.each(function(ii, vv) {
+                        if (ii < 2)
+                            app[headers[ii]] = $(this).find("select").val();
+                    });
+
+                    appendable.push(app);
+                });
+
+                data[inputTable.prev().find("input").attr('name')] = JSON.stringify(appendable);
+            }
+
+            $.ajax({
+                type: "POST",
+                url: link,
+                data: data,
+                processData: false,
+                contentType: false,
+                success: function( html ) {
+                    let frm = $("#frm");
+                    frm.empty();
+                    frm.append(html);
+                }
+            });
+        });
+
+        let datepicker = $("input[type=date]");
+        let hiddenSwitches = $("div.hidden-field-switch");
+
+        if (datepicker.val() === '')
+            datepicker.val((new Date()).yyyymmdd());
+
+        if (hiddenSwitches.length) {
+
+            hiddenSwitches.each(function (i, v) {
+                switchHidden($(this))
+            }
+            );
+            hiddenSwitches.on('change', function () {
+                switchHidden($(this))
+            });
+
+        }
+
+    });
+
+</script>

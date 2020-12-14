@@ -5,7 +5,11 @@
         <title>{% block title %}Система подачи заявлений ЧелГУ{% endblock %}</title>
         <link rel="shortcut icon" type="image/x-icon" href="https://www.csu.ru/Style%20Library/Images/favicon.ico">
         <link rel="stylesheet" href="{{ asset('assets/framework/bootstrap-4.5.3/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/framework/font-awesome-4.7.0/css/font-awesome.min.css') }}"/>
         <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/admin/css/social.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/admin/css/footer.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/admin/css/navbar.css') }}">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
@@ -21,26 +25,67 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('home') }}">Главная </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link"  href="{{ path('admin_home') }}">Личный кабинет <span class="sr-only">(current)</span></a>
+                    <li class="nav-item active dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Личный кабинет<span class="sr-only">(current)</span>
+                        </a>
+                        <!--<a class="nav-link"  href="{{ path('admin_home') }}">Личный кабинет <span class="sr-only">(current)</span></a>-->
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ path('admin_home') }}">Информация о поступлении</a>
+                            <a class="dropdown-item" href="{{ path('admin_user') }}">Заявление</a>
+                        </div>
                     </li>
                 </ul>
-                <form class="form-inline">
+                <form class="form-inline my-2 my-lg-0">
                         <a href="{{ path('app_logout') }}" class="btn btn-outline-info my-2 my-sm-0" type="submit">Выход</a>
                 </form>
             </div>
         </nav>
         <div class="content">
-            <div class="container">
+            <div class="container pb-5">
                 {% block body %}{% endblock %}
             </div>
         </div>
-        <footer>
-
+        <footer class="page-footer font-small mt-5">
+            <!--<hr class="grey accent-3 mb-0 mt-5" style="width: 1100px;">-->
+            <div class="container-fluid text-center text-md-left mt-5">
+                <div class="row mt-3 dark-grey-text">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+                        <h6 class="text-uppercase font-weight-bold">Адрес университета</h6><br/>
+                        <!--<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">-->
+                        <p>454001, г. Челябинск, ул.Братьев Кашириных, 129</p>
+                    </div>
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <h6 class="text-uppercase font-weight-bold">Телефоны</h6><br/>
+                        <!--<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">-->
+                        <p><i class="fa fa-phone mr-3"></i>+7 (351) 799-71-66 приемная комиссия</p>
+                        <p><i class="fa fa-phone mr-3"></i>+7 (351) 799-71-01 приемная ректора</p>
+                    </div>
+                    <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+                        <h6 class="text-uppercase text-center font-weight-bold">ЧелГУ в социальных сетях</h6><br/>
+                        <!--<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"><br/>-->
+                        <div class="row justify-content-center no-gutters">
+                            <div class="social facebook">
+                                <a href="https://facebook.com/csu76"><i class="fa fa-2x fa-facebook"></i></a>
+                            </div>
+                            <div class="social twitter">
+                                <a href="https://twitter.com/csu76"><i class="fa fa-2x fa-twitter"></i></a>
+                            </div>
+                            <div class="social vk">
+                                <a href="http://vk.com/csu76"><i class="fa fa-2x fa-vk"></i></a>
+                            </div>
+                            <div class="social google-pluse">
+                                <a href="https://plus.google.com/b/108725795425654313142/108725795425654313142/posts"><i class="fa fa-2x fa-google-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
-        {% block javascripts %}{% endblock %}
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
+        <script src="{{ asset('assets/framework/jquery-3.5.1/jquery-3.5.1.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="{{ asset('assets/framework/bootstrap-4.5.3/js/bootstrap.min.js') }}"></script>
+        {% block javascripts %}{% endblock %}
     </body>
 </html>
