@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0e4eb0a-38c5-4d45-b69d-a06e2c809028" name="Default Changelist" comment="A">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <list id="860c4796-fc19-468e-93bb-096780eb60af" name="A" comment="A">
       <change afterPath="$PROJECT_DIR$/migrations/Version20201118175603.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/migrations/Version20201129112328.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/migrations/Version20201129144654.php" afterDir="false" />
@@ -1783,7 +1786,6 @@
       <change afterPath="$PROJECT_DIR$/src/Repository/PersonalDataRepository.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Repository/RegistrationPlaceRepository.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Repository/RightRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -2080,7 +2082,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -2189,6 +2190,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2200,7 +2202,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.CommitDialog" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -2234,6 +2236,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a0e4eb0a-38c5-4d45-b69d-a06e2c809028" name="Default Changelist" comment="" />
+      <changelist id="860c4796-fc19-468e-93bb-096780eb60af" name="A" comment="" />
       <created>1602404919471</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -2261,7 +2264,7 @@
       <workItem from="1606323749887" duration="36107000" />
       <workItem from="1606542395122" duration="48148000" />
       <workItem from="1606755296709" duration="57399000" />
-      <workItem from="1607971119137" duration="3784000" />
+      <workItem from="1607971119137" duration="4532000" />
     </task>
     <task id="LOCAL-00001" summary="A">
       <created>1604390187684</created>
@@ -2305,11 +2308,18 @@
       <option name="project" value="LOCAL" />
       <updated>1607971784833</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="A">
+      <created>1607975438736</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1607975438736</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="343047000" />
+    <option name="totallyTimeSpent" value="343795000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
